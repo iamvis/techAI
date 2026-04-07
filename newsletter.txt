@@ -1,0 +1,1 @@
+{"message":"Subscribed successfully","email":"dummy@test.com"}

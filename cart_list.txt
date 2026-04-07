@@ -1,0 +1,1 @@
+[{"_id":"69d4a6a0c261f914a69ad9d6","productId":{"_id":"69d4a650b215f76f1d9408db","name":"Midnight Statement Heels","price":99.99,"discountPrice":74.99,"rating":4.8,"image":"https://images.unsplash.com/photo-1520975926865-92f0b8622c1c?auto=format&fit=crop&w=800&q=80","stock":17},"quantity":2,"createdAt":"2026-04-07T06:39:28.656Z","updatedAt":"2026-04-07T06:39:28.656Z","__v":0}]
