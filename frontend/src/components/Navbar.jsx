@@ -169,7 +169,7 @@ const Navbar = () => {
                 <Link
                   to="/dashboard"
                   onClick={() => setOpen(false)}
-                  className="rounded-3xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
+                  className="inline-flex w-full items-center justify-center rounded-3xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
                 >
                   Dashboard
                 </Link>
@@ -179,7 +179,7 @@ const Navbar = () => {
                     setOpen(false);
                     navigate("/");
                   }}
-                  className="rounded-3xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
+                  className="inline-flex w-full items-center justify-center rounded-3xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
                 >
                   Logout
                 </button>
@@ -189,14 +189,14 @@ const Navbar = () => {
                 <Link
                   to="/login"
                   onClick={() => setOpen(false)}
-                  className="rounded-3xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
+                  className="inline-flex w-full items-center justify-center rounded-3xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
                 >
                   Login
                 </Link>
                 <Link
                   to="/register"
                   onClick={() => setOpen(false)}
-                  className="rounded-3xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
+                  className="inline-flex w-full items-center justify-center rounded-3xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
                 >
                   Register
                 </Link>
