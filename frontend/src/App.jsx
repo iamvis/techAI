@@ -22,14 +22,14 @@ const App = () => {
             <Navbar />
             <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/api/products" element={<Products />} />
-            <Route path="/api/products/:id" element={<ProductDetail />} />
-            <Route path="/api/cart" element={<Cart />} />
-            <Route path="/api/checkout" element={<Checkout />} />
-            <Route path="/api/login" element={<Login />} />
-            <Route path="/api/register" element={<Register />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/products/:id" element={<ProductDetail />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route
-              path="/api/dashboard"
+              path="/dashboard"
               element={
                 <ProtectedRoute>
                   <Dashboard />
