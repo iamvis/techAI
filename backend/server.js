@@ -18,7 +18,7 @@ connectDB();
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://tech-ai-fizy.vercel.app",
     credentials: true,
   })
 );
