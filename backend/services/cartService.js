@@ -1,31 +1,38 @@
 const Cart = require("../models/Cart");
 
-const addToCart = async (productId, quantity) => {
-  const existingItem = await Cart.findOne({ productId });
+const cartItemPopulate = {
+  path: "productId",
+  select: "name price discountPrice image stock rating",
+};
+
+const addToCart = async (userId, productId, quantity) => {
+  const existingItem = await Cart.findOne({ user: userId, productId });
 
   if (existingItem) {
     existingItem.quantity += Number(quantity);
     existingItem.quantity = Math.max(1, existingItem.quantity);
-    return existingItem.save();
+    await existingItem.save();
+    return existingItem.populate(cartItemPopulate);
   }
 
-  return Cart.create({ productId, quantity: Number(quantity) });
+  const cartItem = await Cart.create({ user: userId, productId, quantity: Number(quantity) });
+  return cartItem.populate(cartItemPopulate);
 };
 
-const updateCartItem = async (id, quantity) => {
-  return Cart.findByIdAndUpdate(
-    id,
+const updateCartItem = async (userId, id, quantity) => {
+  return Cart.findOneAndUpdate(
+    { _id: id, user: userId },
     { quantity: Math.max(1, Number(quantity)) },
     { new: true }
-  );
+  ).populate(cartItemPopulate);
 };
 
-const getCartItems = async () => {
-  return Cart.find({}).populate({ path: "productId", select: "name price discountPrice image stock rating" });
+const getCartItems = async (userId) => {
+  return Cart.find({ user: userId }).populate(cartItemPopulate);
 };
 
-const removeCartItem = async (id) => {
-  return Cart.findByIdAndDelete(id);
+const removeCartItem = async (userId, id) => {
+  return Cart.findOneAndDelete({ _id: id, user: userId });
 };
 
 module.exports = {

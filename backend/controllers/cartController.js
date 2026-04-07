@@ -1,6 +1,6 @@
 const {
   addToCart,
-  updateCartItem,
+  updateCartItem: updateCartItemService,
   getCartItems,
   removeCartItem,
 } = require("../services/cartService");
@@ -14,7 +14,7 @@ exports.createCartItem = async (req, res, next) => {
       throw new Error("productId and quantity are required");
     }
 
-    const cartItem = await addToCart(productId, quantity);
+    const cartItem = await addToCart(req.user._id, productId, quantity);
     res.status(201).json(cartItem);
   } catch (error) {
     next(error);
@@ -30,7 +30,7 @@ exports.updateCartItem = async (req, res, next) => {
       throw new Error("Quantity is required");
     }
 
-    const cartItem = await updateCartItem(req.params.id, quantity);
+    const cartItem = await updateCartItemService(req.user._id, req.params.id, quantity);
 
     if (!cartItem) {
       res.status(404);
@@ -45,7 +45,7 @@ exports.updateCartItem = async (req, res, next) => {
 
 exports.fetchCartItems = async (req, res, next) => {
   try {
-    const items = await getCartItems();
+    const items = await getCartItems(req.user._id);
     res.json(items);
   } catch (error) {
     next(error);
@@ -54,7 +54,7 @@ exports.fetchCartItems = async (req, res, next) => {
 
 exports.deleteCartItem = async (req, res, next) => {
   try {
-    const deleted = await removeCartItem(req.params.id);
+    const deleted = await removeCartItem(req.user._id, req.params.id);
 
     if (!deleted) {
       res.status(404);

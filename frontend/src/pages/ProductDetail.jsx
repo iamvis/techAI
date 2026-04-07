@@ -39,8 +39,15 @@ const ProductDetail = () => {
 
   const handleAdd = async () => {
     if (!product) return;
-    await addToCart(product._id, quantity);
-    toast.addToast({ message: "Added to cart successfully!" });
+    try {
+      await addToCart(product._id, quantity);
+      toast.addToast({ message: "Added to cart successfully!" });
+    } catch (error) {
+      toast.addToast({
+        message: error.response?.status === 401 ? "Please log in to add items to the cart." : "Unable to add item to cart.",
+        type: "error",
+      });
+    }
   };
 
   if (loading) {
